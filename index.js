@@ -9,5 +9,5 @@ function webAudioPlayer(src, opt) {
   opt = opt || {}
   if (opt.buffer) return buffer(src, opt)
   if (opt.partialbuffer) return partialBuffer(src, opt)
-  else return media(src, opt)
+  return media(src, opt)
 }
