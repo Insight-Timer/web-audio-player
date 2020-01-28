@@ -2,7 +2,6 @@ var audioPlayer = require('../')
 var createApp = require('canvas-loop')
 var createAnalyser = require('web-audio-analyser')
 var createAudioContext = require('ios-safe-audio-context')
-var detectAutoplay = require('detect-audio-autoplay')
 var detectMediaSource = require('detect-media-element-source')
 var average = require('analyser-frequency-average')
 var tapEvent = require('tap-event')
@@ -58,10 +57,7 @@ function canplay () {
 function start (audioContext, shouldBuffer) {
   // List of sources, usually good to provide
   // a back up in case MP3 isn't supported.
-  var sources = [
-    'demo/bluejean_short.mp3',
-    'demo/bluejean_short.ogg'
-  ]
+  var sources = ['demo/bluejean_short.mp3', 'demo/bluejean_short.ogg']
 
   // Create a looping audio player with our audio context.
   // On mobile, we use the "buffer" mode to support AudioAnalyser.
@@ -144,7 +140,7 @@ function start (audioContext, shouldBuffer) {
 
     // draw a circle
     ctx.beginPath()
-    var radius = Math.min(width, height) / 4 * avg
+    var radius = (Math.min(width, height) / 4) * avg
     ctx.arc(width / 2, height / 2, radius, 0, Math.PI * 2)
     ctx.fill()
     ctx.restore()
